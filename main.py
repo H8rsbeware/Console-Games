@@ -4,14 +4,16 @@ def main():
     b = tfe.board()
     b.changeTile(1,1,2)
     b.changeTile(1,2,10)
-    b.changeTile(2,3,3)
+    b.changeTile(3,3,3)
     b.printBoard()
 
     print(str(b.findTiles()))
 
     print("\n")
-    b.Vslide(True)
+    b.Vslide(False)
     b.printBoard()
+
+
 
 if __name__ == "__main__":
     main()

@@ -49,25 +49,30 @@ class board:
 
     def Vslide(self, up:bool):
 
-
-
-        # Bug, up doesnt push up multiple times
         while True:
+            i = 0
             tiles = self.findTiles()
             for tile in tiles:
-                if tile[0] == 0 or tile[0] == self.size - 1:
-                    return
-                if up:
+                if up and tile[0] != 0:
+                    i = 0
                     if self.isEmpty(tile[0]-1,tile[1]):
                         m = self.getMemory(tile[0], tile[1])
                         self.changeTile(tile[0]-1,tile[1],m)
                         self.changeTile(tile[0], tile[1], 0)
 
-                if not up:
+                elif not up and tile[0] != self.size - 1:
+                    i = 0
                     if self.isEmpty(tile[0]+1, tile[1]):
                         m = self.getMemory(tile[0], tile[1])
                         self.changeTile(tile[0]+1, tile[1],m)
                         self.changeTile(tile[0],tile[1],0)
+                else:
+                    i += 1
+
+                if i == len(tiles):
+                    return
+
+
 
 
 
