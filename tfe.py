@@ -38,13 +38,40 @@ class board:
 
         return res
 
+    def isEmpty(self, r, c):
+        if self.memory[r][c] != 0:
+            return False
+        else:
+            return True
+
+    def getMemory(self, r, c):
+        return self.memory[r][c]
 
     def Vslide(self, up:bool):
 
-        c = 0
-        r = 0
 
-        #if up:
+
+        # Bug, up doesnt push up multiple times
+        while True:
+            tiles = self.findTiles()
+            for tile in tiles:
+                if tile[0] == 0 or tile[0] == self.size - 1:
+                    return
+                if up:
+                    if self.isEmpty(tile[0]-1,tile[1]):
+                        m = self.getMemory(tile[0], tile[1])
+                        self.changeTile(tile[0]-1,tile[1],m)
+                        self.changeTile(tile[0], tile[1], 0)
+
+                if not up:
+                    if self.isEmpty(tile[0]+1, tile[1]):
+                        m = self.getMemory(tile[0], tile[1])
+                        self.changeTile(tile[0]+1, tile[1],m)
+                        self.changeTile(tile[0],tile[1],0)
+
+
+
+
 
     def Hslide(self):
         r = 0
