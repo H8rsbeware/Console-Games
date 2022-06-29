@@ -4,7 +4,7 @@ def main():
     b = tfe.board()
     b.changeTile(1,1,2)
     b.changeTile(1,2,10)
-    b.changeTile(3,3,3)
+    b.changeTile(2,2,3)
     b.printBoard()
 
     print(str(b.findTiles()))
