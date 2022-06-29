@@ -47,7 +47,7 @@ class board:
     def getMemory(self, r, c):
         return self.memory[r][c]
 
-    def Vslide(self, up:bool):
+    def vSlide(self, up:bool):
 
         while True:
             i = 0
@@ -77,13 +77,47 @@ class board:
                 if i == len(tiles):
                     return
 
+    def hSlide(self, left:bool):
+
+        while True:
+            i = 0
+            tiles = self.findTiles()
+            for tile in tiles:
+                if left and tile[1] != 0:
+                    if self.isEmpty(tile[0],tile[1]-1):
+                        i = 0
+                        m = self.getMemory(tile[0], tile[1])
+                        self.changeTile(tile[0],tile[1]-1,m)
+                        self.changeTile(tile[0], tile[1], 0)
+                    else:
+                        i += 1
+
+                elif not left and tile[1] != self.size - 1:
+                    if self.isEmpty(tile[0], tile[1]+1):
+                        i = 0
+                        m = self.getMemory(tile[0], tile[1])
+                        self.changeTile(tile[0], tile[1]+1,m)
+                        self.changeTile(tile[0],tile[1],0)
+                    else:
+                        i += 1
+
+                else:
+                    i += 1
+
+                if i == len(tiles):
+                    return
+
+
+    def merge(self, dir:chr):
+
+        tiles = self.findTiles()
+        for tile in tiles:
+            if dir == "n":
+                if tile[0] != 0 and self.getMemory(tile[0], tile[1]) == self.getMemory(tile[0]-1, tile[1]):
+                    self.changeTile(tile[0], tile[1], 0)
+                    self.changeTile(tile[0]-1, tile[1], self.getMemory(tile[0]-1, tile[1]) + 1)
 
 
 
 
-
-
-    def Hslide(self):
-        r = 0
-        c = 0
 
