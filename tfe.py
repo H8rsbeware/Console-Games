@@ -116,6 +116,24 @@ class board:
                 if tile[0] != 0 and self.getMemory(tile[0], tile[1]) == self.getMemory(tile[0]-1, tile[1]):
                     self.changeTile(tile[0], tile[1], 0)
                     self.changeTile(tile[0]-1, tile[1], self.getMemory(tile[0]-1, tile[1]) + 1)
+                    self.vSlide(True)
+            if dir == "s":
+                if tile[0] != len(tiles) and self.getMemory(tile[0], tile[1]) == self.getMemory(tile[0]+1, tile[1]):
+                    self.changeTile(tile[0], tile[1], 0)
+                    self.changeTile(tile[0]+1, tile[1], self.getMemory(tile[0]+1, tile[1]) + 1)
+                    self.vSlide(False)
+            if dir == "e":
+                if tile[1] != len(tiles) and self.getMemory(tile[0], tile[1]) == self.getMemory(tile[0], tile[1]+1):
+                    self.changeTile(tile[0],tile[1],0)
+                    self.changeTile(tile[0],tile[1]+1, self.getMemory(tile[0],tile[1]+1) + 1)
+                    self.hSlide(False)
+            if dir == "w":
+                if tile[1] != 0 and self.getMemory(tile[0], tile[1]) == self.getMemory(tile[0], tile[1]-1):
+                    self.changeTile(tile[0], tile[1], 0)
+                    self.changeTile(tile[0], tile[1]-1, self.getMemory(tile[0], tile[1]-1) + 1)
+                    self.hSlide(True)
+
+
 
 
 

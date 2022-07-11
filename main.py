@@ -10,13 +10,13 @@ def main():
     print(str(b.findTiles()))
 
     print("\n")
-    b.vSlide(True)
+    b.vSlide(False)
     b.printBoard()
     print("\n")
     b.hSlide(True)
     b.printBoard()
     print("\n")
-    b.merge("n")
+    b.merge("w")
     b.printBoard()
 
 
